@@ -1,37 +1,1455 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鍊金術師 · Frontend Developer | 前端工程師個人品牌網站</title>
+  <meta name="description" content="歡迎來到鍊金術師的個人品牌網站。我是一位專注於使用者體驗的前端工程師,在此分享我的技能、作品集與專業背景,並提供聯絡方式讓我們能夠進一步交流合作。">
+  
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; max-width: 100%; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif; line-height: 1.6; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { width: 1920px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .col-12 { grid-column: span 12; }
-    @media (min-width: 768px) { .col-md-6 { grid-column: span 6; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+    /* CSS:BASE-START */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
+      line-height: 1.6;
+      color: #e0e0e0;
+      background-color: #0a1929;
+      margin: 0;
+    }
+    
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .section {
+      padding: 3rem 0;
+      min-height: 50vh;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #4fc3f7;
+      text-align: center;
+    }
+    
+    main {
+      flex: 1;
+    }
+    /* CSS:BASE-END */
+    
+    /* CSS:NAV-START */
+    .site-header {
+      background-color: rgba(13, 27, 42, 0.95);
+      border-bottom: 1px solid #1e3a5f;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .nav-brand {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+    
+    .nav-menu {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    
+    .nav-link {
+      color: #b0bec5;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+    }
+    
+    .nav-link:hover {
+      color: #4fc3f7;
+    }
+    /* CSS:NAV-END */
+    
+    /* CSS:HERO-START */
+    .section-hero {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.25rem;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: #4fc3f7;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem;
+      color: #b0bec5;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+    
+    .hero-note {
+      font-size: 0.9rem;
+      color: #78909c;
+      font-style: italic;
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: rgba(30, 58, 95, 0.3);
+      border-radius: 8px;
+      border-left: 3px solid #4fc3f7;
+    }
+    /* CSS:HERO-END */
+    
+    /* CSS:ABOUT-START */
+    .section-about {
+      background-color: #0d1b2a;
+    }
+    
+    .about-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .about-text-content {
+      flex: 1;
+    }
+    
+    .about-intro {
+      font-size: 1.1rem;
+      color: #b0bec5;
+      margin-bottom: 1.25rem;
+      line-height: 1.8;
+    }
+    
+    .about-highlights {
+      margin: 2rem 0;
+    }
+    
+    .about-highlights-title {
+      font-size: 1.25rem;
+      color: #4fc3f7;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    
+    .about-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .about-list-item {
+      padding: 0.75rem 0;
+      padding-left: 1.75rem;
+      position: relative;
+      color: #b0bec5;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    
+    .about-list-item::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #4fc3f7;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .about-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .about-btn {
+      display: inline-block;
+      padding: 0.875rem 1.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .about-btn-primary {
+      background-color: #4fc3f7;
+      color: #0a1929;
+    }
+    
+    .about-btn-primary:hover {
+      background-color: #81d4fa;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4);
+    }
+    
+    .about-btn-secondary {
+      background-color: transparent;
+      color: #4fc3f7;
+      border: 2px solid #4fc3f7;
+    }
+    
+    .about-btn-secondary:hover {
+      background-color: rgba(79, 195, 247, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 195, 247, 0.2);
+    }
+    
+    .about-image-wrapper {
+      flex: 1;
+      max-width: 500px;
+      width: 100%;
+    }
+    
+    .about-image {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    /* CSS:ABOUT-END */
+    
+    /* CSS:SKILLS-START */
+    .section-skills {
+      background-color: #1b263b;
+    }
+
+    .skills-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+      color: #b0bec5;
+      line-height: 1.8;
+    }
+
+    .skills-categories {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .skill-category {
+      background-color: rgba(13, 27, 42, 0.6);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid rgba(79, 195, 247, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      border-color: rgba(79, 195, 247, 0.5);
+      box-shadow: 0 4px 20px rgba(79, 195, 247, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .skill-category-title {
+      font-size: 1.5rem;
+      color: #4fc3f7;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .skill-category-icon {
+      font-size: 1.75rem;
+    }
+
+    .skill-items {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .skill-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .skill-name {
+      font-size: 1.05rem;
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+
+    .skill-level {
+      font-size: 0.9rem;
+      color: #78909c;
+    }
+
+    .skill-bar {
+      height: 8px;
+      background-color: rgba(79, 195, 247, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4fc3f7 0%, #81d4fa 100%);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .skill-bar-fill.level-expert {
+      width: 90%;
+    }
+
+    .skill-bar-fill.level-advanced {
+      width: 75%;
+    }
+
+    .skill-bar-fill.level-intermediate {
+      width: 60%;
+    }
+    /* CSS:SKILLS-END */
+    
+    /* CSS:PROJECTS-START */
+    .section-projects {
+      background-color: #0d1b2a;
+    }
+
+    .projects-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+      color: #b0bec5;
+      line-height: 1.8;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .project-card {
+      background-color: rgba(27, 38, 59, 0.6);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(79, 195, 247, 0.2);
+      transition: all 0.3s ease;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .project-card:hover {
+      border-color: rgba(79, 195, 247, 0.5);
+      box-shadow: 0 8px 24px rgba(79, 195, 247, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .project-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background-color: #1b263b;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(10, 25, 41, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .project-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #4fc3f7;
+      color: #0a1929;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      background-color: #81d4fa;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4);
+    }
+
+    .project-content {
+      padding: 1.75rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      color: #4fc3f7;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .project-description {
+      font-size: 1rem;
+      color: #b0bec5;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 0.375rem 0.875rem;
+      background-color: rgba(79, 195, 247, 0.15);
+      color: #4fc3f7;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(79, 195, 247, 0.3);
+    }
+
+    .projects-cta {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background-color: rgba(27, 38, 59, 0.4);
+      border-radius: 12px;
+      border: 1px solid rgba(79, 195, 247, 0.2);
+    }
+
+    .projects-cta-text {
+      font-size: 1.25rem;
+      color: #e0e0e0;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .projects-cta-btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background-color: #4fc3f7;
+      color: #0a1929;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .projects-cta-btn:hover {
+      background-color: #81d4fa;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(79, 195, 247, 0.4);
+    }
+    /* CSS:PROJECTS-END */
+    
+    /* CSS:CONTACT-START */
+    .section-contact {
+      background-color: #1b263b;
+    }
+
+    .contact-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+      color: #b0bec5;
+      line-height: 1.8;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .contact-info {
+      background-color: rgba(13, 27, 42, 0.6);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid rgba(79, 195, 247, 0.2);
+    }
+
+    .contact-info-title {
+      font-size: 1.5rem;
+      color: #4fc3f7;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: rgba(79, 195, 247, 0.05);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-method:hover {
+      background-color: rgba(79, 195, 247, 0.1);
+      transform: translateX(4px);
+    }
+
+    .contact-method-icon {
+      font-size: 1.75rem;
+      flex-shrink: 0;
+    }
+
+    .contact-method-content {
+      flex: 1;
+    }
+
+    .contact-method-label {
+      font-size: 0.9rem;
+      color: #78909c;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-method-value {
+      font-size: 1.05rem;
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+
+    .contact-social {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(79, 195, 247, 0.2);
+    }
+
+    .contact-social-title {
+      font-size: 1.25rem;
+      color: #4fc3f7;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .contact-social-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .contact-social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      background-color: rgba(79, 195, 247, 0.05);
+      border: 1px solid rgba(79, 195, 247, 0.2);
+      border-radius: 8px;
+      text-decoration: none;
+      color: #e0e0e0;
+      transition: all 0.3s ease;
+    }
+
+    .contact-social-link:hover {
+      background-color: rgba(79, 195, 247, 0.15);
+      border-color: rgba(79, 195, 247, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .contact-social-icon {
+      font-size: 1.5rem;
+    }
+
+    .contact-social-name {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .contact-form-wrapper {
+      background-color: rgba(13, 27, 42, 0.6);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid rgba(79, 195, 247, 0.2);
+    }
+
+    .contact-form-title {
+      font-size: 1.5rem;
+      color: #4fc3f7;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .contact-form-description {
+      font-size: 1rem;
+      color: #b0bec5;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-size: 1rem;
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background-color: rgba(10, 25, 41, 0.6);
+      border: 1px solid rgba(79, 195, 247, 0.3);
+      border-radius: 6px;
+      color: #e0e0e0;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #4fc3f7;
+      background-color: rgba(10, 25, 41, 0.8);
+      box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.1);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit-btn {
+      padding: 1rem 2rem;
+      background-color: #4fc3f7;
+      color: #0a1929;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .form-submit-btn:hover {
+      background-color: #81d4fa;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(79, 195, 247, 0.4);
+    }
+
+    .form-submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .form-note {
+      font-size: 0.9rem;
+      color: #78909c;
+      margin-top: -0.5rem;
+    }
+
+    .contact-footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background-color: rgba(13, 27, 42, 0.4);
+      border-radius: 12px;
+      border: 1px solid rgba(79, 195, 247, 0.2);
+    }
+
+    .contact-footer-text {
+      font-size: 1rem;
+      color: #b0bec5;
+      line-height: 1.6;
+    }
+
+    .contact-footer-link {
+      color: #4fc3f7;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .contact-footer-link:hover {
+      color: #81d4fa;
+      text-decoration: underline;
+    }
+    /* CSS:CONTACT-END */
+    
+    /* CSS:FOOTER-START */
+    .site-footer {
+      background-color: #0a1929;
+      border-top: 1px solid #1e3a5f;
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+    
+    .footer-text {
+      color: #78909c;
+      font-size: 0.9rem;
+    }
+    /* CSS:FOOTER-END */
+    
+    /* CSS:RWD-START */
+    @media (max-width: 767px) {
+      .nav-menu {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav-link {
+        font-size: 0.85rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+      
+      .about-cta {
+        flex-direction: column;
+      }
+      
+      .about-btn {
+        width: 100%;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .section {
+        padding: 4rem 0;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .nav-menu {
+        gap: 2rem;
+      }
+      
+      .about-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+      }
+      
+      .about-text-content {
+        flex: 1.2;
+      }
+      
+      .about-image-wrapper {
+        flex: 1;
+        max-width: 450px;
+      }
+      
+      .section-title {
+        text-align: left;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 2rem;
+      }
+      
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      
+      .about-wrapper {
+        gap: 4rem;
+      }
+    }
+    /* CSS:RWD-END */
   </style>
 </head>
 <body>
-  <header class="container" role="banner">
-    <nav aria-label="主選單">
-      <a href="#about">關於我</a>
-      <a href="#projects">作品集</a>
-      <a href="https://example.com/blog">技術部落格</a>
-      <a href="mailto:me@example.com">聯絡我</a>
-    </nav>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <p>歡迎來到我的個人網站！這裡整理了學習紀錄、Side Project 與實作心得。</p>
-  </header>
+  <div class="page">
+    <header class="site-header">
+      <nav class="nav">
+        <a href="#hero" class="nav-brand">鍊金術師 · Frontend Dev</a>
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link">首頁</a></li>
+          <li><a href="#about" class="nav-link">關於我</a></li>
+          <li><a href="#skills" class="nav-link">技能</a></li>
+          <li><a href="#projects" class="nav-link">作品集</a></li>
+          <li><a href="#contact" class="nav-link">聯絡我</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <!-- SECTION:HERO-START -->
+      <section id="hero" class="section section-hero">
+        <div class="hero-content">
+          <p class="hero-greeting">👋 嗨,我是鍊金術師</p>
+          <h1 class="hero-title">
+            打造<span class="hero-title-highlight">優質使用者體驗</span><br>的前端工程師
+          </h1>
+          <p class="hero-subtitle">
+            專注於現代網頁開發 · 熱愛乾淨的程式碼 · 追求極致的使用者體驗
+          </p>
+          <p class="hero-description">
+            我相信好的網站不只是美觀,更要能真正解決使用者的問題。透過精心設計的介面與流暢的互動,讓每一次點擊都充滿意義。
+          </p>
+        </div>
+      </section>
+      <!-- SECTION:HERO-END -->
+      
+      <!-- SECTION:ABOUT-START -->
+      <section id="about" class="section section-about" aria-labelledby="about-heading">
+        <div class="container">
+          <h2 id="about-heading" class="section-title">關於我</h2>
+          <div class="about-wrapper">
+            <div class="about-text-content">
+              <p class="about-intro">
+                我是一位專注於前端開發的工程師,目前從事網頁應用程式開發、技術教學與接案服務。擅長使用 HTML、CSS、JavaScript 以及現代前端框架,打造流暢且易用的使用者介面。
+              </p>
+              <p class="about-intro">
+                我非常重視溝通與協作,喜歡把複雜的技術概念用清楚易懂的方式解釋給團隊成員或客戶。同時也熱愛教學,樂於分享知識,幫助他人成長。
+              </p>
+              
+              <div class="about-highlights">
+                <h3 class="about-highlights-title">我能為您提供的協助</h3>
+                <ul class="about-list">
+                  <li class="about-list-item">響應式網頁開發與前端架構設計,確保跨裝置的最佳體驗</li>
+                  <li class="about-list-item">技術諮詢與程式碼審查,提升專案品質與開發效率</li>
+                  <li class="about-list-item">前端技術教學與工作坊,協助團隊提升技術能力</li>
+                </ul>
+              </div>
+              
+              <div class="about-cta">
+                <a href="#projects" class="about-btn about-btn-primary">查看作品集</a>
+                <a href="#contact" class="about-btn about-btn-secondary">聯絡我</a>
+              </div>
+            </div>
+            
+            <div class="about-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=1000&fit=crop" alt="專注於螢幕前撰寫程式碼的前端工程師,展現專業的工作環境" loading="lazy" class="about-image">
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:ABOUT-END -->
+      
+      <!-- SECTION:SKILLS-START -->
+      <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
+        <div class="container">
+          <h2 id="skills-heading" class="section-title">技能專長</h2>
+          
+          <p class="skills-intro">
+            多年的前端開發經驗,讓我累積了紮實的技術基礎與實戰能力。以下是我熟練掌握的技術領域。
+          </p>
+          
+          <div class="skills-categories">
+            <!-- 前端開發 -->
+            <div class="skill-category">
+              <h3 class="skill-category-title">
+                <span class="skill-category-icon">💻</span>
+                前端開發
+              </h3>
+              <div class="skill-items">
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">HTML5 / CSS3</span>
+                    <span class="skill-level">精通</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-expert"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">JavaScript / ES6+</span>
+                    <span class="skill-level">精通</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-expert"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">TypeScript</span>
+                    <span class="skill-level">熟練</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-advanced"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">Responsive Web Design</span>
+                    <span class="skill-level">精通</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-expert"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 框架與函式庫 -->
+            <div class="skill-category">
+              <h3 class="skill-category-title">
+                <span class="skill-category-icon">⚛️</span>
+                框架與函式庫
+              </h3>
+              <div class="skill-items">
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">React</span>
+                    <span class="skill-level">熟練</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-advanced"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">Vue.js</span>
+                    <span class="skill-level">熟練</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-advanced"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">Tailwind CSS</span>
+                    <span class="skill-level">熟練</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-advanced"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">Sass / SCSS</span>
+                    <span class="skill-level">熟練</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-advanced"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 開發工具 -->
+            <div class="skill-category">
+              <h3 class="skill-category-title">
+                <span class="skill-category-icon">🛠️</span>
+                開發工具
+              </h3>
+              <div class="skill-items">
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">Git / GitHub</span>
+                    <span class="skill-level">精通</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-expert"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">Webpack / Vite</span>
+                    <span class="skill-level">熟練</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-advanced"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">VS Code</span>
+                    <span class="skill-level">精通</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-expert"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">Chrome DevTools</span>
+                    <span class="skill-level">精通</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-expert"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- UI/UX 與設計 -->
+            <div class="skill-category">
+              <h3 class="skill-category-title">
+                <span class="skill-category-icon">🎨</span>
+                UI/UX 與設計
+              </h3>
+              <div class="skill-items">
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">Figma</span>
+                    <span class="skill-level">熟練</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-advanced"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">使用者體驗設計</span>
+                    <span class="skill-level">熟練</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-advanced"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">無障礙網頁設計 (A11y)</span>
+                    <span class="skill-level">中等</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-intermediate"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-item-header">
+                    <span class="skill-name">設計系統建立</span>
+                    <span class="skill-level">中等</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-fill level-intermediate"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:SKILLS-END -->
+      
+      <!-- SECTION:PROJECTS-START -->
+      <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
+        <div class="container">
+          <h2 id="projects-heading" class="section-title">作品集</h2>
+          
+          <p class="projects-intro">
+            以下是我近期完成的專案作品,展示了我在前端開發、UI/UX 設計與問題解決方面的能力。
+          </p>
+          
+          <div class="projects-grid">
+            <!-- 專案 1 -->
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="電商網站專案展示,包含商品列表與購物車功能的現代化介面設計" loading="lazy" class="project-image">
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="https://example.com/demo1" class="project-link" target="_blank" rel="noopener noreferrer">查看 Demo</a>
+                    <a href="https://github.com/name/project1" class="project-link" target="_blank" rel="noopener noreferrer">查看程式碼</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">電商平台前端開發</h3>
+                <p class="project-description">
+                  使用 React 與 TypeScript 打造的現代化電商網站,具備完整的商品瀏覽、購物車、結帳流程,並整合第三方金流 API。
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">React</span>
+                  <span class="project-tag">TypeScript</span>
+                  <span class="project-tag">Redux</span>
+                  <span class="project-tag">Tailwind CSS</span>
+                </div>
+              </div>
+            </article>
+            
+            <!-- 專案 2 -->
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="數據儀表板專案,展示圖表與數據視覺化的後台管理介面" loading="lazy" class="project-image">
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="https://example.com/demo2" class="project-link" target="_blank" rel="noopener noreferrer">查看 Demo</a>
+                    <a href="https://github.com/name/project2" class="project-link" target="_blank" rel="noopener noreferrer">查看程式碼</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">數據視覺化儀表板</h3>
+                <p class="project-description">
+                  為企業客戶打造的數據分析平台,整合多種圖表元件,提供即時數據監控與報表匯出功能,提升決策效率。
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">Vue.js</span>
+                  <span class="project-tag">Chart.js</span>
+                  <span class="project-tag">Vuex</span>
+                  <span class="project-tag">SCSS</span>
+                </div>
+              </div>
+            </article>
+            
+            <!-- 專案 3 -->
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop" alt="部落格平台專案,展示文章列表與閱讀介面的響應式設計" loading="lazy" class="project-image">
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="https://example.com/demo3" class="project-link" target="_blank" rel="noopener noreferrer">查看 Demo</a>
+                    <a href="https://github.com/name/project3" class="project-link" target="_blank" rel="noopener noreferrer">查看程式碼</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">個人部落格系統</h3>
+                <p class="project-description">
+                  採用 JAMstack 架構的靜態部落格,支援 Markdown 編輯、標籤分類、全文搜尋,並優化 SEO 與載入速度。
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">Next.js</span>
+                  <span class="project-tag">Markdown</span>
+                  <span class="project-tag">SEO</span>
+                  <span class="project-tag">Vercel</span>
+                </div>
+              </div>
+            </article>
+            
+            <!-- 專案 4 -->
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" alt="任務管理應用程式專案,展示看板式的專案管理介面" loading="lazy" class="project-image">
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="https://example.com/demo4" class="project-link" target="_blank" rel="noopener noreferrer">查看 Demo</a>
+                    <a href="https://github.com/name/project4" class="project-link" target="_blank" rel="noopener noreferrer">查看程式碼</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">團隊協作工具</h3>
+                <p class="project-description">
+                  類似 Trello 的看板式任務管理工具,支援拖放操作、即時協作、權限管理,提升團隊工作效率。
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">React</span>
+                  <span class="project-tag">DnD Kit</span>
+                  <span class="project-tag">Firebase</span>
+                  <span class="project-tag">Material-UI</span>
+                </div>
+              </div>
+            </article>
+            
+            <!-- 專案 5 -->
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="響應式企業網站專案,展示現代化的公司形象網站設計" loading="lazy" class="project-image">
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="https://example.com/demo5" class="project-link" target="_blank" rel="noopener noreferrer">查看 Demo</a>
+                    <a href="https://github.com/name/project5" class="project-link" target="_blank" rel="noopener noreferrer">查看程式碼</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">企業形象網站</h3>
+                <p class="project-description">
+                  為新創公司設計的品牌官網,強調視覺設計與使用者體驗,完全響應式設計,並通過 Web Vitals 效能測試。
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">HTML5</span>
+                  <span class="project-tag">CSS3</span>
+                  <span class="project-tag">JavaScript</span>
+                  <span class="project-tag">Performance</span>
+                </div>
+              </div>
+            </article>
+            
+            <!-- 專案 6 -->
+            <article class="project-card">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" alt="開源元件庫專案,展示可重用的 UI 元件集合" loading="lazy" class="project-image">
+                <div class="project-overlay">
+                  <div class="project-links">
+                    <a href="https://example.com/demo6" class="project-link" target="_blank" rel="noopener noreferrer">查看 Demo</a>
+                    <a href="https://github.com/name/project6" class="project-link" target="_blank" rel="noopener noreferrer">查看程式碼</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">UI 元件庫</h3>
+                <p class="project-description">
+                  開源的 React 元件庫專案,提供常用的 UI 元件與完整文件,已發布至 npm,獲得社群正面回饋。
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">React</span>
+                  <span class="project-tag">Storybook</span>
+                  <span class="project-tag">npm</span>
+                  <span class="project-tag">Open Source</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        
+        </div>
+      </section>
+      <!-- SECTION:PROJECTS-END -->
+      
+      <!-- SECTION:CONTACT-START -->
+      <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
+        <div class="container">
+          <h2 id="contact-heading" class="section-title">聯絡我</h2>
+          
+          <p class="contact-intro">
+            無論是專案合作、技術諮詢,或是單純想聊聊前端開發,我都非常樂意與您交流。歡迎透過以下方式與我聯繫!
+          </p>
+          
+          <div class="contact-wrapper">
+            <!-- 聯絡資訊 -->
+            <div class="contact-info">
+              <h3 class="contact-info-title">聯絡資訊</h3>
+              
+              <div class="contact-methods">
+                <a href="mailto:hello@example.com" class="contact-method">
+                  <div class="contact-method-icon">📧</div>
+                  <div class="contact-method-content">
+                    <div class="contact-method-label">Email</div>
+                    <div class="contact-method-value">hello@example.com</div>
+                  </div>
+                </a>
+                
+                <a href="tel:+886900000000" class="contact-method">
+                  <div class="contact-method-icon">📱</div>
+                  <div class="contact-method-content">
+                    <div class="contact-method-label">電話</div>
+                    <div class="contact-method-value">+886 900 000 000</div>
+                  </div>
+                </a>
+                
+                <div class="contact-method">
+                  <div class="contact-method-icon">📍</div>
+                  <div class="contact-method-content">
+                    <div class="contact-method-label">位置</div>
+                    <div class="contact-method-value">台北市,台灣</div>
+                  </div>
+                </div>
+                
+                <div class="contact-method">
+                  <div class="contact-method-icon">⏰</div>
+                  <div class="contact-method-content">
+                    <div class="contact-method-label">工作時間</div>
+                    <div class="contact-method-value">週一至週五 9:00 - 18:00</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="contact-social">
+                <h4 class="contact-social-title">社群媒體</h4>
+                <div class="contact-social-links">
+                  <a href="https://github.com/name" class="contact-social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <span class="contact-social-icon">🐙</span>
+                    <span class="contact-social-name">GitHub</span>
+                  </a>
+                  
+                  <a href="https://www.linkedin.com/in/name" class="contact-social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <span class="contact-social-icon">💼</span>
+                    <span class="contact-social-name">LinkedIn</span>
+                  </a>
+                  
+                  <a href="https://twitter.com/name" class="contact-social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <span class="contact-social-icon">🐦</span>
+                    <span class="contact-social-name">Twitter</span>
+                  </a>
+                  
+                  <a href="https://codepen.io/name" class="contact-social-link" target="_blank" rel="noopener noreferrer" aria-label="CodePen">
+                    <span class="contact-social-icon">✏️</span>
+                    <span class="contact-social-name">CodePen</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 聯絡表單區 (純 HTML/CSS,無 JS) -->
+            <div class="contact-form-wrapper">
+              <h3 class="contact-form-title">傳送訊息</h3>
+              <p class="contact-form-description">填寫表單,我會盡快回覆您</p>
+              
+              <form class="contact-form" action="https://formspree.io/f/-form-id" method="POST">
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">姓名 *</label>
+                  <input type="text" id="contact-name" name="name" class="form-input" required placeholder="請輸入您的姓名">
+                </div>
+                
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">Email *</label>
+                  <input type="email" id="contact-email" name="email" class="form-input" required placeholder="@email.com">
+                </div>
+                
+                <div class="form-group">
+                  <label for="contact-subject" class="form-label">主旨</label>
+                  <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="簡短描述您的需求">
+                </div>
+                
+                <div class="form-group">
+                  <label for="contact-message" class="form-label">訊息內容 *</label>
+                  <textarea id="contact-message" name="message" class="form-textarea" required placeholder="請詳細說明您的需求或問題..." rows="6"></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit-btn">送出訊息</button>
+                
+                <p class="form-note">* 為必填欄位</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:CONTACT-END -->
 
-  <footer class="container" role="contentinfo">
-    <p>© 2025 My Portfolio · <a href="#">GitHub</a></p>
-    <img src="https://source.unsplash.com/600x200/?technology,abstract" alt="">
-  </footer>
+    </main>
+    
+    <footer class="site-footer">
+      <div class="container">
+        <p class="footer-text">© 2025 鍊金術師 · Frontend Developer. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
